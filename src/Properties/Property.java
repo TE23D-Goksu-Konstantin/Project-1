@@ -3,7 +3,7 @@ package Properties;
 public abstract class Property 
 {
  
-    protected int rooms;
+    private int rooms;
     protected int cubic_Meter; //Cubic meters of the property
     protected int bathrooms;
     protected int kitchens; 
@@ -25,7 +25,6 @@ public abstract class Property
         this.garden_Cubic_Meter = garden_Cubic_Meter;
         this.price = price;
         this.color =  color;
-
         this.SSN = SSN;
         this.street_Number = street_Number;
         properties_Sold++;
@@ -39,25 +38,28 @@ public abstract class Property
 
     public void setRooms_Nr(int rooms) //Checks if the amount of rooms exceeds or undermines the limit
     {
-                try 
-                {
-                    if(rooms>=2 || rooms<=7)
-                    {
-                        this.rooms = rooms;
-                    }
-                } 
-                catch (IllegalArgumentException e) 
-                {
-                    System.out.println("ERROR (Room amount has exceeded the limit (2-7))");
-                }
+        if(rooms<2 || rooms>7)
+        {
+            throw new IllegalArgumentException("Room amount has exceeded the limit (2-7)");
+        }
+        this.rooms = rooms;
     }
 
-    public void Assign_House_Info(int rooms, int bathrooms, int kitchens, int cubic_Meter, int color)
-    {
+
+
+
+
+
+
+
+
+
+    // public void Assign_House_Info(int rooms, int bathrooms, int kitchens, int cubic_Meter, int color)
+    // {
         
 
 
-    }
+    // }
 
 /*
                 System.out.println("Exterior color?");

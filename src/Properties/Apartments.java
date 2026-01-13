@@ -1,6 +1,6 @@
-package Properties;
+// package Properties;
 
-public class Apartments extends Property
-{
+// public class Apartments extends Property
+// {
     
-}
+// }

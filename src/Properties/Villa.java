@@ -2,5 +2,16 @@ package Properties;
 
 public class Villa extends Property
 {
+    private boolean driveway;
+    private boolean garage;
+
+        public Villa(boolean driveway, boolean garage, int rooms, int cubic_Meter, int bathrooms, int kitchens, 
+        int garden_Cubic_Meter, int price, String color, String SSN, String street_Number)
+    {
+        super(rooms, cubic_Meter, bathrooms, kitchens, 
+            garden_Cubic_Meter, price, color, SSN, street_Number);
+        this.driveway = driveway;
+        this.garage = garage;
+    }
     
 }

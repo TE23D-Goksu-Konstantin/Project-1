@@ -2,5 +2,14 @@ package Properties;
 
 public class Townhouse extends Property
 {
+    private int conjoined_Buildings;
+
+    public Townhouse(int conjoined_Buildings, int rooms, int cubic_Meter, int bathrooms, int kitchens, 
+        int garden_Cubic_Meter, int price, String color, String SSN, String street_Number)
+    {
+        super(rooms, cubic_Meter, bathrooms, kitchens, 
+            garden_Cubic_Meter, price, color, SSN, street_Number);
+        this.conjoined_Buildings = conjoined_Buildings;
+    }
     
 }
