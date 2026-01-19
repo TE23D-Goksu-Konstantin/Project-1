@@ -12,7 +12,7 @@ public class Garage extends Property
         super(rooms, cubic_Meter, bathrooms, kitchens, 
             garden_Cubic_Meter, price, color, SSN, street_Number);
         this.car_Space = car_Space;
-        this.storage_Space = storage_Space;
+        this.storage_Space = Utility.Limit_Verify(storage_Space, 10, 50, "Garage storage area");
     }
     
 }

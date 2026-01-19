@@ -9,7 +9,7 @@ public class Townhouse extends Property
     {
         super(rooms, cubic_Meter, bathrooms, kitchens, 
             garden_Cubic_Meter, price, color, SSN, street_Number);
-        this.conjoined_Buildings = conjoined_Buildings;
+        this.conjoined_Buildings = Utility.Limit_Verify(conjoined_Buildings, 0, 2, "Adjacent connected buildings");
     }
     
 }

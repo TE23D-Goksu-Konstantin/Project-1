@@ -17,7 +17,4 @@ public class Apartments
         this.SSN = Utility.String_Verify(SSN);
     }
 
-
-
-
 }

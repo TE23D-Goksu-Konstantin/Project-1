@@ -9,8 +9,8 @@ public class Apartment_Complex
     
     public Apartment_Complex(int floors, String street_Number)
     {
-        this.floors = floors;
-        this.street_Number = street_Number;
+        this.floors = Utility.Limit_Verify(floors, 3, 20, "Apartment floors");
+        this.street_Number = Utility.String_Verify(street_Number);
         this.apartments = new ArrayList<>();
     }
 }
