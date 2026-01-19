@@ -4,7 +4,7 @@ public class Garage extends Property
 {
 
     private boolean car_Space;
-    private int storage_Space;
+    private int storage_Space; //Total area of the garage
 
     public Garage(boolean car_Space, int storage_Space, int rooms, int cubic_Meter, int bathrooms, int kitchens, 
         int garden_Cubic_Meter, int price, String color, String SSN, String street_Number)

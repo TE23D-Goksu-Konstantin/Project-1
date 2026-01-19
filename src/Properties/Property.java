@@ -12,18 +12,18 @@ public abstract class Property
     protected String color; //Outer building color
     protected String SSN; //Social Security Number
     protected String street_Number;
-    private int properties_Sold = 0; //Counts the amount of properties sold
+    public int properties_Sold = 0; //Counts the amount of properties sold
 
-
+//Assigns the values written by the user into the program
     public Property(int rooms, int cubic_Meter, int bathrooms, int kitchens, 
         int garden_Cubic_Meter, int price, String color, String SSN, String street_Number)
     {
         this.rooms  = Limit_Verify(rooms, 2, 7, "Room");
-        this.cubic_Meter = Limit_Verify(cubic_Meter, 150, 250, "Interior cubic Meter");
+        this.cubic_Meter = Limit_Verify(cubic_Meter, 150, 250, "Interior cubic meter");
         this.bathrooms = Limit_Verify(bathrooms, 1, 4, "Bathroom");
         this.kitchens = Limit_Verify(kitchens, 1, 2, "Kitchen");
         this.garden_Cubic_Meter = Limit_Verify(garden_Cubic_Meter, 100, 400, "Exterior cubic meter");
-        this.price = Limit_Verify(price, 2000000, 15000000, "Price");
+        this.price = Limit_Verify(price, 500000, 15000000, "Price");
         this.color =  String_Verify(color);
         this.SSN = String_Verify(SSN);
         this.street_Number = String_Verify(street_Number);
