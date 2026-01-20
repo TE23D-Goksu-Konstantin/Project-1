@@ -14,15 +14,15 @@ public abstract class Property
     protected String street_Number;
     public int properties_Sold = 0; //Counts the amount of properties sold
 
-//Assigns the values written by the user into the program
+    //Constructor, assigns the values written by the user into the program
     public Property(int rooms, int cubic_Meter, int bathrooms, int kitchens, 
         int garden_Cubic_Meter, int price, String color, String SSN, String street_Number)
     {
         this.rooms  = Utility.Limit_Verify(rooms, 2, 7, "Room");
         this.cubic_Meter = Utility.Limit_Verify(cubic_Meter, 150, 250, "Interior cubic meter");
-        this.bathrooms = Utility.Limit_Verify(bathrooms, 1, 4, "Bathroom");
-        this.kitchens = Utility.Limit_Verify(kitchens, 1, 2, "Kitchen");
-        this.garden_Cubic_Meter = Utility.Limit_Verify(garden_Cubic_Meter, 100, 400, "Exterior cubic meter");
+        this.bathrooms = Utility.Limit_Verify(bathrooms, 0, 4, "Bathroom");
+        this.kitchens = Utility.Limit_Verify(kitchens, 0, 2, "Kitchen");
+        this.garden_Cubic_Meter = Utility.Limit_Verify(garden_Cubic_Meter, 0, 400, "Exterior cubic meter");
         this.price = Utility.Limit_Verify(price, 500000, 15000000, "Price");
         this.color =  Utility.String_Verify(color);
         this.SSN = Utility.String_Verify(SSN);
@@ -33,7 +33,21 @@ public abstract class Property
 
 
 
-
+    @Override
+    public String toString()
+    {
+        return 
+        "\nAdress: " + street_Number +
+        "\nPrice: " + price + 
+        "\nBuyers SSN: " + SSN +  
+        "\n----------------" + 
+        "\nRooms: " + rooms + 
+        "\nArea: " + cubic_Meter + "m^2" + 
+        "\nGarden area: " + garden_Cubic_Meter + "m^2" + 
+        "\nBathrooms: " + bathrooms + 
+        "\nKitchens: " + kitchens + 
+        "\nOuter color: " + color;
+    }
 
 
 

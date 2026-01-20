@@ -8,6 +8,7 @@ public class Apartments
     private boolean balcony;
     private String SSN;
 
+    //Constructor for the individual creation of arrays that is in "Apartment_Complex" 
     public Apartments(int cubic_Meter, int bathrooms, int price, boolean balcony, String SSN)
     {
         this.cubic_Meter = Utility.Limit_Verify(cubic_Meter, 25, 220, "Interior cubic meter + balcony (if included)");
