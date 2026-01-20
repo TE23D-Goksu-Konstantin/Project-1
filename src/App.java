@@ -53,10 +53,11 @@ public class App
     
     
                         default:
+                            System.out.println("Please choose an option to proceed");
                             break;
                     }
                 } 
-                catch (IllegalArgumentException e) 
+                catch (IllegalArgumentException e) //If input is invalid -> throw error msg
                 {
                     System.out.println("Please choose an option to proceed");
                 }
