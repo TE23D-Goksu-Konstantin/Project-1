@@ -1,20 +1,22 @@
 import java.util.Scanner;
 
-import javax.lang.model.util.ElementScanner14;
 
 public abstract class Public_Utility 
 {
     public static int Int_Verifier(String name, Scanner userInputStr) 
     {
-        try 
+        while(true)
         {
-            System.out.println(name + "? ");
-            String value = userInputStr.nextLine();
-            int valueInt = Integer.parseInt(value);
-            return valueInt;
-
-        } catch (Exception e) {
-            throw new IllegalArgumentException("Faulty input, try again");
+            try 
+            {
+                System.out.println(name + "? ");
+                String value = userInputStr.nextLine();
+                int valueInt = Integer.parseInt(value);
+                return valueInt;
+                
+            } catch (Exception e) {
+                System.out.println("Faulty input, try again");
+            }
         }
     }
 

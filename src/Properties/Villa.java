@@ -20,8 +20,8 @@ public class Villa extends Property
     public String toString()
     {
         return super.toString() + 
-        "Driveway space: " + driveway +
-        "Garage: " + garage + 
+        "\nDriveway space: " + driveway +
+        "\nGarage: " + garage + 
         "\n----------------";
     }
 }

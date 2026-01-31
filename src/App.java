@@ -43,7 +43,19 @@ public class App
     
                         case 3:
                             System.out.println("List orders selected");
-    
+
+                            if(buildings.isEmpty())
+                                {
+                                    System.out.println("No orders registered yet");
+                                }
+                                else
+                                {
+                                    for(Property p : buildings)
+                                        {
+                                            System.out.println(p);
+                                        }
+                                }
+
                             break;
     
                         case 4:
@@ -84,11 +96,22 @@ public class App
             case 1:
                 buildings.add(villa_Create(userInputStr)); 
                 break;
+
+            case 2:
+                buildings.add(townhouse_Create(userInputStr)); 
+                break;  
+
+            case 3:
+                buildings.add(garage_Create(userInputStr)); 
+                break;  
+
+            case 4:
+                // buildings.add
+                break;
                 
             default:
                 break;
-        }
-            
+        }  
     }
 
 
@@ -98,7 +121,6 @@ public class App
         {           
             userInputStr.nextLine(); //Super important for no first misreads 
             boolean garage = Public_Utility.bool_Verifier("Garage", userInputStr);
-
             boolean driveway = Public_Utility.bool_Verifier("Driveway", userInputStr);
 
             PropertyTemp temp = Property_Create(userInputStr);
@@ -111,6 +133,64 @@ public class App
             throw new IllegalArgumentException("Faulty input, try again");
         }
     }
+
+    public static Townhouse townhouse_Create(Scanner userInputStr)
+    {
+        try 
+        {           
+            userInputStr.nextLine(); //Super important for no first misreads 
+            int conjoined_Buildings = Public_Utility.Int_Verifier("Conjoined buildings", userInputStr);
+
+            PropertyTemp temp = Property_Create(userInputStr);
+            
+            return new Townhouse(conjoined_Buildings, temp.rooms, temp.cubic_Meters, temp.bathrooms, temp.kitchens, 
+                temp.garden_Cubic_Meter, temp.price, temp.color, temp.SSN, temp.street_Number);
+            
+            
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Faulty input, try again");
+        }
+    }
+
+
+    public static Garage garage_Create(Scanner userInputStr)
+    {
+        try 
+        {           
+            userInputStr.nextLine(); //Super important for no first misreads 
+            int storage_Space = Public_Utility.Int_Verifier("Storage space", userInputStr);
+            boolean car_Space = Public_Utility.bool_Verifier("Car availability", userInputStr);
+
+            PropertyTemp temp = Property_Create(userInputStr);
+            
+            return new Garage(car_Space, storage_Space, temp.rooms, temp.cubic_Meters, temp.bathrooms, temp.kitchens, 
+                temp.garden_Cubic_Meter, temp.price, temp.color, temp.SSN, temp.street_Number);
+            
+            
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Faulty input, try again");
+        }
+    }
+
+
+    // public static Garage Apartment_Create(Scanner userInputStr)
+    // {
+    //     try 
+    //     {           
+    //         userInputStr.nextLine(); //Super important for no first misreads 
+    //         int storage_Space = Public_Utility.Int_Verifier("Storage space", userInputStr);
+    //         boolean car_Space = Public_Utility.bool_Verifier("Car availability", userInputStr);
+
+    //         PropertyTemp temp = Property_Create(userInputStr);
+            
+    //         return new Garage(car_Space, storage_Space, temp.rooms, temp.cubic_Meters, temp.bathrooms, temp.kitchens, 
+    //             temp.garden_Cubic_Meter, temp.price, temp.color, temp.SSN, temp.street_Number);
+            
+            
+    //     } catch (Exception e) {
+    //         throw new IllegalArgumentException("Faulty input, try again");
+    //     }
+    // }
 
 
 
