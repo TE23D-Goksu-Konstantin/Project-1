@@ -18,50 +18,53 @@ public class App
         int buildingCount = 0; //Counts all new registered buildings
 
         while(buildingCount <= buildings.size()) //As long as building count is below max -> continue
-            {
-                System.out.println(
-                    "1. Register purchase" + 
-                    "\n2. Unregister purchase" + 
-                    "\n3. List orders" + 
-                    "\n4. Count profit"
+        {
+            System.out.println(
+                "1. Register purchase" + 
+                "\n2. Unregister purchase" + 
+                "\n3. List orders" + 
+                "\n4. Count profit"
                 );
                 
-                String menu_Choice = userInputStr.nextLine(); //Forces a user input
-                try 
-                {
-                    int userInputInt = Integer.parseInt(menu_Choice); //Translates user input to an integer
-                    switch (userInputInt) {
-                        case 1:
-                            System.out.println("Register purchase selected");
-                            register_Purchase_Option(userInputStr, buildings);
-                            break;
+            String menu_Choice = userInputStr.nextLine(); //Forces a user input
+            try 
+            {
+                int userInputInt = Integer.parseInt(menu_Choice); //Translates user input to an integer
+                switch (userInputInt) {
+                    case 1:
+                        System.out.println("Register purchase selected");
+                        register_Purchase_Option(userInputStr, buildings);
+                        break;
     
-                        case 2:
-                            System.out.println("Unregister purchase selected");
-    
-                            break;
-    
-                        case 3:
-                            System.out.println("List orders selected");
+                    case 2:
+                        System.out.println("Unregister purchase selected");
+                        RemoveOrder(buildings, userInputStr);
 
-                            if(buildings.isEmpty())
-                                {
-                                    System.out.println("No orders registered yet");
-                                }
-                                else
-                                {
-                                    for(Property p : buildings)
-                                        {
-                                            System.out.println(p);
-                                        }
-                                }
+                        break;
+    
+                    case 3:
+                        System.out.println("List orders selected");
 
-                            break;
+                        if(buildings.isEmpty())
+                        {
+                            System.out.println("No orders registered yet");
+                        }
+                        else
+                        {
+                            for(Property p : buildings)
+                            {
+                                System.out.println(p);
+                            }
+                        }
+
+                        break;
     
-                        case 4:
-                            System.out.println("Count profit selected");
-    
-                            break;
+                    case 4:
+                        System.out.println("Count profit selected");
+                        
+
+
+                        break;
                         
     
     
@@ -217,6 +220,33 @@ public class App
 
 
         return new PropertyTemp(rooms, cubic_Meters, bathrooms, kitchens, garden_Cubic_Meter, price, color, SSN, street_Number);
+
+    }
+
+
+
+
+
+    public static void RemoveOrder(ArrayList<Property> buildings, Scanner userInputStr)
+    {
+        if(buildings.isEmpty())
+        {
+            System.out.println("No orders registered yet");
+            return;
+        }
+        
+        System.out.println("Enter SSN: ");
+        String SSN = userInputStr.nextLine();
+
+        for(int i = 0; i < buildings.size(); i++)
+            {
+                if(buildings.get(i).getSSN().equals(SSN))
+                    {
+                        buildings.remove(i);
+                        System.out.println("Order successfully removed");
+                        return;
+                    }
+            }
 
     }
 

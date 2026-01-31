@@ -50,7 +50,10 @@ public abstract class Property
     }
 
 
-
+    public String getSSN()
+    {
+        return SSN;
+    }
 
 
 
