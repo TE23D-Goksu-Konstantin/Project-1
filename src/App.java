@@ -3,6 +3,8 @@ import Properties.Garage;
 import Properties.Townhouse;
 import Properties.Villa;
 import Properties.Apartment_Complex;
+import Properties.Apartments;
+import Properties.Shared;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -14,7 +16,7 @@ public class App
     {
         Scanner userInputStr = new Scanner(System.in); //Keyboard reader -> string for program reader
         
-        ArrayList<Property> buildings = new ArrayList<>(); //Amount of buildings that can exist at once
+        ArrayList<Shared> buildings = new ArrayList<>(); //Creates the shared arraylist dependant on the interface
         int buildingCount = 0; //Counts all new registered buildings
 
         while(buildingCount <= buildings.size()) //As long as building count is below max -> continue
@@ -34,12 +36,13 @@ public class App
                     case 1:
                         System.out.println("Register purchase selected");
                         register_Purchase_Option(userInputStr, buildings);
+                        buildingCount++;
                         break;
     
                     case 2:
                         System.out.println("Unregister purchase selected");
                         RemoveOrder(buildings, userInputStr);
-
+                        buildingCount--;
                         break;
     
                     case 3:
@@ -51,7 +54,7 @@ public class App
                         }
                         else
                         {
-                            for(Property p : buildings)
+                            for(Shared p : buildings)
                             {
                                 System.out.println(p);
                             }
@@ -83,8 +86,8 @@ public class App
     }
 
 
-
-    public static void register_Purchase_Option(Scanner userInputStr, ArrayList<Property> buildings)
+    //registers the input and proceeds to add it to the registry if input values are correct
+    public static void register_Purchase_Option(Scanner userInputStr, ArrayList<Shared> buildings) 
     {
 
         System.out.println(
@@ -95,7 +98,7 @@ public class App
         );
         int reg_Choice = userInputStr.nextInt();
 
-        switch (reg_Choice) {
+        switch (reg_Choice) { //checks user input and directs accordingly
             case 1:
                 buildings.add(villa_Create(userInputStr)); 
                 break;
@@ -109,7 +112,9 @@ public class App
                 break;  
 
             case 4:
-                // buildings.add
+             Apartment_Complex complex = createApartmentComplex(userInputStr); //Creates a new complex and adds the amount of apartments to the complex
+                addApartmentsToComplex(complex, userInputStr);
+                buildings.add(complex);
                 break;
                 
             default:
@@ -117,7 +122,57 @@ public class App
         }  
     }
 
+    //Creates the apartment complex (parent to individual apartments)
+    public static Apartment_Complex createApartmentComplex(Scanner userInputStr) 
+    {
+        userInputStr.nextLine(); //Important to clear previous line
 
+        int floors = Public_Utility.Int_Verifier("Number of floors", userInputStr);
+        String street = Public_Utility.Str_Verifier("Street name", userInputStr);
+        String SSN = Public_Utility.Str_Verifier("Owner SSN", userInputStr);
+        int price = Public_Utility.Int_Verifier("Price of the complex", userInputStr);
+
+        return new Apartment_Complex(floors, street, SSN, price);
+    }
+
+
+
+    
+    //Creates the individual apartments
+    public static Apartments apartment_Create(Scanner userInputStr)
+    {
+        try 
+        {
+            userInputStr.nextLine(); //Super important for no first misreads 
+            int cubic_Meters = Public_Utility.Int_Verifier("Cubic meters", userInputStr);
+            int bathrooms = Public_Utility.Int_Verifier("Bathrooms", userInputStr);
+            int price = Public_Utility.Int_Verifier("Price", userInputStr);
+            boolean balcony = Public_Utility.bool_Verifier("Balcony", userInputStr);
+            String SSN = Public_Utility.Str_Verifier("SSN", userInputStr);
+    
+            return new Apartments(cubic_Meters, bathrooms, price, balcony, SSN);
+            
+        } 
+        catch (Exception e) 
+        {
+            throw new IllegalArgumentException("Faulty input, try again");
+        }
+    }
+
+    //Creates the individual apartments according to the amount of apartments listed in complex
+    public static void addApartmentsToComplex(Apartment_Complex complex, Scanner userInputStr) 
+    {
+        int numApartments = Public_Utility.Int_Verifier("Number of apartments", userInputStr);
+
+        for (int i = 0; i < numApartments; i++) 
+        {
+            Apartments a = apartment_Create(userInputStr);
+            complex.addApartment(a);
+        }
+    }
+
+
+    
     public static Villa villa_Create(Scanner userInputStr)
     {
         try 
@@ -136,6 +191,7 @@ public class App
             throw new IllegalArgumentException("Faulty input, try again");
         }
     }
+
 
     public static Townhouse townhouse_Create(Scanner userInputStr)
     {
@@ -176,27 +232,8 @@ public class App
     }
 
 
-    // public static Garage Apartment_Create(Scanner userInputStr)
-    // {
-    //     try 
-    //     {           
-    //         userInputStr.nextLine(); //Super important for no first misreads 
-    //         int storage_Space = Public_Utility.Int_Verifier("Storage space", userInputStr);
-    //         boolean car_Space = Public_Utility.bool_Verifier("Car availability", userInputStr);
 
-    //         PropertyTemp temp = Property_Create(userInputStr);
-            
-    //         return new Garage(car_Space, storage_Space, temp.rooms, temp.cubic_Meters, temp.bathrooms, temp.kitchens, 
-    //             temp.garden_Cubic_Meter, temp.price, temp.color, temp.SSN, temp.street_Number);
-            
-            
-    //     } catch (Exception e) {
-    //         throw new IllegalArgumentException("Faulty input, try again");
-    //     }
-    // }
-
-
-
+    //Shared for all properties, simplifies the sharing information
     public static PropertyTemp Property_Create(Scanner userInputStr)
     {
 
@@ -226,8 +263,8 @@ public class App
 
 
 
-
-    public static void RemoveOrder(ArrayList<Property> buildings, Scanner userInputStr)
+    //Removes and order dependant on the buildings owner's social security number (SSN)
+    public static void RemoveOrder(ArrayList<Shared> buildings, Scanner userInputStr)
     {
         if(buildings.isEmpty())
         {

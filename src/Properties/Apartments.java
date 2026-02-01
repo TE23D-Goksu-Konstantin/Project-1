@@ -18,4 +18,23 @@ public class Apartments
         this.SSN = Utility.String_Verify(SSN);
     }
 
+    //Used to list the property
+    @Override
+    public String toString()
+    {
+        return
+        "\nCubic meters: " + cubic_Meter +
+        "\nBathrooms: " + bathrooms + 
+        "\nPrice: " + price +
+        "\nBalcony: " + balcony + 
+        "\nSSN: " + SSN +
+        "\n----------------";
+    }
+
+    //Retrievs shared information
+    public int getPrice() 
+    {
+    return price;
+    }
+
 }

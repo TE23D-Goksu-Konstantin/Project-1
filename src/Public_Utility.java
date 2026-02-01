@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public abstract class Public_Utility 
 {
+    //Varifies the legitimacy of the input
     public static int Int_Verifier(String name, Scanner userInputStr) 
     {
         while(true)
@@ -21,7 +22,7 @@ public abstract class Public_Utility
     }
 
 
-
+    //Varifies the legitimacy of the input
     public static String Str_Verifier(String name, Scanner userInputStr) 
     {
         try 
@@ -36,7 +37,7 @@ public abstract class Public_Utility
         }
     }
 
-
+    //Varifies the legitimacy of the input
     public static boolean bool_Verifier(String name, Scanner userInputStr)
     {
         while(true)

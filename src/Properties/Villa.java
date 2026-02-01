@@ -19,7 +19,7 @@ public class Villa extends Property
     @Override
     public String toString()
     {
-        return super.toString() + 
+        return
         "\nDriveway space: " + driveway +
         "\nGarage: " + garage + 
         "\n----------------";

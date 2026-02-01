@@ -15,11 +15,12 @@ public class PropertyTemp
 
 
 
-        public PropertyTemp(int rooms, int cubic_Meters, int bathrooms, int kitchens, 
-        int garden_Cubic_Meter, int price, String color, String SSN, String street_Number)
+    public PropertyTemp(int rooms, int cubic_Meters, int bathrooms, int kitchens, 
+    int garden_Cubic_Meter, int price, String color, String SSN, String street_Number)
     {
+        //Shared information with crtierias for what is allowed
         this.rooms  = Utility.Limit_Verify(rooms, 2, 7, "Room");
-        this.cubic_Meters = Utility.Limit_Verify(cubic_Meters, 150, 250, "Interior cubic meter");
+        this.cubic_Meters = Utility.Limit_Verify(cubic_Meters, 150, 250, "Interior cubic meter"); 
         this.bathrooms = Utility.Limit_Verify(bathrooms, 0, 4, "Bathroom");
         this.kitchens = Utility.Limit_Verify(kitchens, 0, 2, "Kitchen");
         this.garden_Cubic_Meter = Utility.Limit_Verify(garden_Cubic_Meter, 0, 400, "Exterior cubic meter");

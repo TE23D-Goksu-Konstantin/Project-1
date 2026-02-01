@@ -1,6 +1,6 @@
 package Properties;
 
-public abstract class Property 
+public abstract class Property implements Shared
 {
  
     protected int rooms;
@@ -49,10 +49,16 @@ public abstract class Property
         "\nOuter color: " + color;
     }
 
-
+    @Override
     public String getSSN()
     {
         return SSN;
+    }
+
+    @Override 
+    public int getPrice()
+    {
+        return price;
     }
 
 
