@@ -14,9 +14,10 @@ public class App
 {
     public static void main(String[] args) throws Exception 
     {
+        ArrayList<Shared> buildings = new ArrayList<>(); //Creates the shared arraylist dependant on the interface
+
         Scanner userInputStr = new Scanner(System.in); //Keyboard reader -> string for program reader
         
-        ArrayList<Shared> buildings = new ArrayList<>(); //Creates the shared arraylist dependant on the interface
         int buildingCount = 0; //Counts all new registered buildings
 
         while(buildingCount <= buildings.size()) //As long as building count is below max -> continue
@@ -63,14 +64,17 @@ public class App
                         break;
     
                     case 4:
-                        System.out.println("Count profit selected");
-                        
-
+                        System.out.println("Count profit selected"); //Counts and adds all costs of the variable price in the list
+                        int totalProfit = 0;
+                        for(int i = 0; i < buildings.size(); i++)
+                        {
+                            totalProfit += buildings.get(i).getPrice();
+                        }
+                        System.out.println("Profit: " + totalProfit);
 
                         break;
                         
-    
-    
+
                         default:
                             System.out.println("Please choose an option to proceed");
                             break;
@@ -237,17 +241,17 @@ public class App
     public static PropertyTemp Property_Create(Scanner userInputStr)
     {
 
-        int rooms = Public_Utility.Int_Verifier("Rooms", userInputStr);
+        int rooms = Public_Utility.Int_Verifier("Rooms (2-7)", userInputStr);
 
-        int cubic_Meters = Public_Utility.Int_Verifier("Cubic meters", userInputStr);
+        int cubic_Meters = Public_Utility.Int_Verifier("Cubic meters (150-250)", userInputStr);
 
-        int bathrooms = Public_Utility.Int_Verifier("Bathrooms", userInputStr);
+        int bathrooms = Public_Utility.Int_Verifier("Bathrooms (0-4)", userInputStr);
 
-        int kitchens = Public_Utility.Int_Verifier("Kitchens", userInputStr);
+        int kitchens = Public_Utility.Int_Verifier("Kitchens (0-2)", userInputStr);
 
-        int garden_Cubic_Meter = Public_Utility.Int_Verifier("Garden cubic meters", userInputStr);
+        int garden_Cubic_Meter = Public_Utility.Int_Verifier("Garden cubic meters (0-400)", userInputStr);
 
-        int price = Public_Utility.Int_Verifier("Price", userInputStr);
+        int price = Public_Utility.Int_Verifier("Price (500,000-1,500,000)", userInputStr);
 
         String color = Public_Utility.Str_Verifier("Exterior color", userInputStr);
 
@@ -284,16 +288,5 @@ public class App
                         return;
                     }
             }
-
     }
-
-
-
-
-
-
-
-
-
-
 }

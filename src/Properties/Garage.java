@@ -21,8 +21,8 @@ public class Garage extends Property
     public String toString()
     {
         return super.toString() + 
-        "Parking space: " + car_Space +
-        "Storage space: " + storage_Space + "m^2" +
+        "\nParking space: " + car_Space +
+        "\nStorage space: " + storage_Space + "m^2" +
         "\n----------------";
     }
 }

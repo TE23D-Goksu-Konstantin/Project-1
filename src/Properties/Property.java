@@ -61,39 +61,4 @@ public abstract class Property implements Shared
         return price;
     }
 
-
-
-
-
-
-
-    // public void Assign_House_Info(int rooms, int bathrooms, int kitchens, int cubic_Meter, int color)
-    // {
-        
-
-
-    // }
-
-/*
-                System.out.println("Exterior color?");
-                System.out.println("Cost?");
-                System.out.println("Kitchens?");
-                System.out.println("Exterior space? (m²)");
-                System.out.println("Interior space? (m²)");
-                System.out.println("Bathrooms?");
-                
-
-                System.out.println("Rooms?");
-                try 
-                {
-                    if(rooms>=2 || rooms<=7)
-                    {
-                        this.rooms = rooms;
-                    }
-                } 
-                catch (IllegalArgumentException e) 
-                {
-                    System.out.println("Rooms must stay within 2-7.");
-                }
-*/
 }

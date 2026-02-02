@@ -18,7 +18,7 @@ public class Townhouse extends Property
     public String toString()
     {
         return super.toString() + 
-        "Conjoined buildings: " + conjoined_Buildings +
+        "\nConjoined buildings: " + conjoined_Buildings +
         "\n----------------";
     }
     
